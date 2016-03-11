@@ -24,7 +24,7 @@
                     @endif
 
                     <div class="forn-group" style="text-align: center;">
-                        <a href="{{ route('post.index') }}"><button class="btn btn-warning">Retour aux Articles</button></a>
+                        <a href="{{ route('post.index') }}"><button class="btn btn-success">Retour aux Articles</button></a>
                     </div>
                     <div class="panel-body">
                         <h3>Commentaires</h3>
