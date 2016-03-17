@@ -27,11 +27,10 @@
                         <br/>
 
                         {{--Affiche si le projet est validé ou pas--}}
-                        <div class="text-center"
-                             @if($bap->validate == 1)
-                             style="position:absolute; bottom:0; color:green;"><i class="fa fa-check"></i> Projet validé
-                            @else
-                                style="position: absolute; bottom: 0; color:red;"><i class="fa fa-close"></i> Projet non validé
+                        @if($bap->validate == 1)
+                            <div class="text-center" style="position:absolute; bottom:0; color:green;"><i class="fa fa-check"></i> Projet validé
+                                @else
+                                    <div class="text-center" style="position: absolute; bottom: 0; color:red;"><i class="fa fa-close"></i> Projet non validé
                             @endif
                         </div>
                     </div>

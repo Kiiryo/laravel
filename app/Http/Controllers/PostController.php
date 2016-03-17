@@ -100,8 +100,6 @@ class PostController extends Controller
 
         $post->fill($input)->save();
 
-        
-
         return redirect()->route('post.show', $id)->with('success', 'Votre message a bien été modifié.');
         
     }

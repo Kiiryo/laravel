@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
+            @include('errors.message')
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">IIM - Bourse au projet</div>
@@ -79,24 +80,11 @@
                                   'placeholder' => 'Les contraintes du projet'
                               ]) !!}
 
-                        <span style="display:none;">
-                                    {!! Form::number('validate','0') !!}}
-                                </span>
                         <br/>
 
                         {!! Form::submit('Envoyer', ['class' => ' form-control']) !!}
 
                         {!! Form::close() !!}
-
-                        @if($errors)
-                            <br>
-                            <div class="alert-warning">
-                                @foreach($errors->all() as $error)
-                                    <p>{{$error}}</p>
-                                @endforeach
-                            </div>
-
-                        @endif
                     </div>
                 </div>
             </div>
