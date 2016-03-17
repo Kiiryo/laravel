@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(Auth::check() && Auth::user()->id == $bap->user_id)
+    @if(Auth::check() && Auth::user()->id == $bap->user_id || Auth::user()->isAdmin)
 
         <div class="container">
             <h1>{{$bap->name}}</h1>

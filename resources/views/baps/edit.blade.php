@@ -84,15 +84,16 @@
                                       'class' => 'form-control',
                                       'placeholder' => 'Les contraintes du projet'
                                   ]) !!}
-                            <div class="form-group">
-                                <label>Projet validé</label>
-                                @if($bap->validate == 0)
-                               {!! Form::checkbox('validate', '1') !!}
-                                @else($bap->validate == 1)
-                               {!! Form::checkbox('validate', 'smallInteger', true) !!}
-                                @endif
-
-                            </div>
+                            @if(Auth::check() && Auth::user()->isAdmin))
+                                <div class="form-group">
+                                    <label>Projet validé</label>
+                                    @if($bap->validate == 0)
+                                   {!! Form::checkbox('validate', '1') !!}
+                                    @else($bap->validate == 1)
+                                   {!! Form::checkbox('validate', 'smallInteger', true) !!}
+                                    @endif
+                                </div>
+                            @endif
                             <br/>
 
                             {!! Form::submit('Envoyer', ['class' => ' form-control']) !!}

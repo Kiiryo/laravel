@@ -5,7 +5,7 @@
         <div class="row">
             @include('errors.message')
             @foreach($baps as $bap)
-                @if(Auth::check() && Auth::user()->id == $bap->user_id)
+                @if(Auth::check() && Auth::user()->id == $bap->user_id || Auth::user()->isAdmin)
 
                     <div class="thumbnail col-md-3" style="margin-right:20px; min-height:200px">
 
