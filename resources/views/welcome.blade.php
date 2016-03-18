@@ -8,7 +8,9 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    <strong>Your Application's Landing Page.</strong><br><br>
+                    <a href="{{ url('/login') }}" type="button" class="btn btn-default btn-lg btn-block">Connectez vous </a><br>
+                    <a href="{{ url('/register') }}" type="button" class="btn btn-default btn-lg btn-block">Inscrivez vous</a>
                 </div>
             </div>
         </div>
