@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Models\Comment;
+use Illuminate\Foundation\Auth\User;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Http\Request;
+
 use App\Http\Requests;
 
-class CommentController extends Controller
+class ProfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +18,17 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct(){
-        $this->middleware('auth')->only(['create', 'edit']);
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        //
+        $user = Auth::user();
+        if(Auth::check()) {
+            return view('profil.index')->with(compact('user'));
+        }
     }
 
     /**
@@ -45,15 +49,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['comment' => 'required']);
-
-        $comments = new Comment;
-        $input =  $request->input();
-        $input['user_id'] = Auth::user()->id;
-        $input['post_id'] = $request->post_id;
-        $comments->fill($input)->save();
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -75,7 +71,13 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        if(Auth::check() && $id==Auth::user()->id) {
+            return view('profil.edit')->with(compact('user'));
+        }
+        else {
+            return redirect()->route('profil.edit', Auth::user()->id);
+        }
     }
 
     /**
@@ -87,7 +89,14 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+        if ($request->user()) {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
+            return redirect()->route('profil.index', $user->id)->with('success', 'Votre message a bien été modifié.');
+        }
     }
 
     /**
@@ -98,8 +107,6 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comment = Comment::findOrFail($id);
-        $comment->delete();
-        return redirect()->back()->with('success', 'Votre commentaire a bien été supprimé.');
+        //
     }
 }

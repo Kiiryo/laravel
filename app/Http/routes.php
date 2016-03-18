@@ -37,7 +37,11 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::resource('/post', 'PostController');
 
+    Route::resource('/comment', 'CommentController');
+
     Route::resource('/bap', 'BapController');
+
+    Route::resource('/profil', 'ProfilController');
 
     Route::get('/admin', function(){return 'admin';	})->middleware('isadmin');
 
