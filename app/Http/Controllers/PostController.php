@@ -55,7 +55,7 @@ class PostController extends Controller
         $input['user_id'] = Auth::user()->id;       
         $posts->fill($input)->save();
 
-        return redirect()->route('post.index');
+        return redirect()->route('post.index')->with('success', 'Votre article a bien été publié.');
     }
 
     /**

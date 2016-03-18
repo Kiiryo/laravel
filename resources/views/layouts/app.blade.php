@@ -49,9 +49,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ route('post.index') }}">Articles</a></li>
-                    <li><a href="{{ route('bap.index') }}">liste BAP</a></li>
 
                     @if(Auth::check())
+                        <li><a href="{{ route('bap.index') }}">liste vos BAP</a></li>
                         <li><a href="{{ route('post.create') }}">Ajouter un article</a></li>
                         <li><a href="{{ route('bap.create') }}">Ajouter BAP</a></li>
                     @endif

@@ -54,9 +54,8 @@ class BapController extends Controller
         $bap->objectif      = $request->objectif;
         $bap->contrainte    = $request->contrainte;
         $bap->save();
-        return redirect()
-            ->route('bap.show', $bap->id)
-            ->with(compact('bap'));
+        return redirect()->route('bap.index')->with('success', 'Votre Bap a bien été soumis.');
+
     }
 
     /**
@@ -119,6 +118,8 @@ class BapController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bap = BapModel::findOrFail($id);
+        $bap->delete();
+        return redirect()->route('bap.index', $id)->with('success', 'Votre bap a bien été supprimé.');
     }
 }

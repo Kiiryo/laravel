@@ -7,21 +7,15 @@
             @foreach($baps as $bap)
                 @if(Auth::check() && Auth::user()->id == $bap->user_id || Auth::user()->isAdmin)
 
-                    <div class="thumbnail col-md-3" style="margin-right:20px; min-height:200px">
+                    <div class="thumbnail col-md-3" style="margin-right:20px; min-height:100px">
 
                         <a href="{{route('bap.show', $bap->id)}}">
                             <div class="description" style="font-size:1.4em;">
                                 {{$bap->id}}. {{$bap->name}}
                             </div>
                         </a>
-                        <a href="{{$bap->username}}}}"><p>{{$bap->username}}</p></a>
+                        <p>{{$bap->username}}</p>
                         <p>Type de projet : {{$bap->type}}</p>
-
-                        {{--Bouton pour valider le projet, appelle la fonction edit du BapController pour modifier la valeur dans la bdd--}}
-
-                        <a href="{{ route('bap.edit', $bap->id)}}" class="btn btn-success btn-line btn-rect">
-                            <i class="fa fa-pencil"></i> Editer
-                        </a>
 
                         <br/>
                         <br/>
@@ -37,6 +31,7 @@
                 @else
                 @endif
             @endforeach
+
         </div>
     </div>
 @endsection
